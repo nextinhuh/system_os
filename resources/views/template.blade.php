@@ -46,7 +46,7 @@
       
       <div class="top-menu">
         <ul class="nav pull-right top-menu">
-          <li><a class="logout" href="login.html">Sair</a></li>
+          <li><a class="logout" href="{{route('deslogando')}}">Sair</a></li>
         </ul>
       </div>
     </header>
@@ -89,7 +89,7 @@
               </a>
             <ul class="sub">
               <li><a href="{{route('user_register')}}"  >Cadastrar Usuário</a></li>
-              <li><a href="{{route('user_alter')}}">Alterar Usuário</a></li>
+              <li><a href="{{route('user_register')}}">Alterar Usuário</a></li>
             </ul>
           </li>
 

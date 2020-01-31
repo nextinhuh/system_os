@@ -11,7 +11,14 @@
 |
 */
 
-Route::get('/', function () {
+Route::group(['prefix' => '/'], function () {
+    
+    Route::get('', 'LoginController@tela_login')->name("login");
+    Route::post('logando', 'LoginController@logando')->name("logando");
+    Route::get('deslogando', 'LoginController@deslogando')->name("deslogando");
+});
+
+Route::get('/main', function () {
     return view('main_page', $menu = ['menu' => 1]);
 })->name('main');
 

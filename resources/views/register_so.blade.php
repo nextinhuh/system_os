@@ -19,11 +19,11 @@
             </div>@endif
 
             @if (session('save-status') == "sucess_user" )
-              <div class="alert alert-success"><b>Ótimo!</b> Usuário cadastrado com sucesso!</div>
+              <div class="alert alert-success"><b>Ótimo!</b> Ordem de serviço cadastrado com sucesso!</div>
             @endif
 
             @if (session('save-status') == "fail_user" )
-            <div class="alert alert-danger"><b>Ops!</b> Algo deu errado, favor verificar se o nome digitado está correto.</div>
+            <div class="alert alert-danger"><b>Ops!</b> Algo deu errado, favor verificar as informações e tentar novamente.</div>
             @endif
 
       <h4 class="mb"><i class="fa fa-angle-right"></i> Gerar Ordem de Serviço</h4>
@@ -32,7 +32,7 @@
         <div class="form-group">
           <label class="col-sm-2 col-sm-2 control-label">Número da Ordem: </label>
           <div class="col-sm-10">
-            <input type="text" class="form-control">
+            <input type="text" class="form-control" value="@if ($processos != null) {{$processos+1}} @endif" disabled>
           </div>
         </div>
 
@@ -55,7 +55,7 @@
         <div class="form-group">
           <label class="col-sm-2 col-sm-2 control-label">Setor: </label>
           <div class="col-sm-10">
-            <input type="text" class="form-control round-form" placeholder="SECOM" disabled name="setor">
+            <input type="text" class="form-control round-form" value="SECOM" disabled name="setor">
           </div>
         </div>
         

@@ -11,13 +11,13 @@ class ServiceOrderController extends Controller
     private $dados = ['menu' => 2];
 
     public function order_register(){
-        /*$processos = Ordem_Servico::where('id', '>=', 0)->get();
+        $processos = Ordem_Servico::max('id');
         if($processos != null){
-            return view('register_so', ['ordens' => $processo, 'menu' => 2]);
+            return view('register_so', ['processos' => $processos, 'menu' => 2]);
         }else{
-            return view('register_so', $this->dados);
-        }*/
-        return view('register_so', $this->dados);
+            return view('register_so', ['processos' => $processos, 'menu' => 2]);
+        }
+        
         
     }
 
@@ -37,7 +37,6 @@ class ServiceOrderController extends Controller
         ],[
             'dt_servico' => 'Data',
             'nome' => 'Nome do Funcionário',
-            'setor' => 'Setor',
             'desc_servico' => 'Descrição do Serviço'
             ]);
             
@@ -51,12 +50,12 @@ class ServiceOrderController extends Controller
                 $processo->id_funcionario = $dados->id;
                 
                 if ($processo->save()) {
-                    return redirect()->route('user_register', $this->menu)->with('save-status', 'sucess_user');
+                    return redirect()->route('order_register', $this->dados)->with('save-status', 'sucess_user');
                 }else{
-                    return redirect()->route('user_register', $this->menu)->with('save-status', 'fail_user');
+                    return redirect()->route('order_register', $this->dados)->with('save-status', 'fail_user');
                 }
             }else{
-                return redirect()->route('user_register', $this->menu)->with('save-status', 'fail_user');
+                return redirect()->route('order_register', $this->dados)->with('save-status', 'fail_user');
             }
             
             
