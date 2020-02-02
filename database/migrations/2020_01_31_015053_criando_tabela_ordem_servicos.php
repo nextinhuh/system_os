@@ -18,7 +18,10 @@ class CriandoTabelaOrdemServicos extends Migration
             $table->unsignedBigInteger('id_funcionario');
             $table->string('setor');
             $table->string('dt_servico');
-            $table->string('desc_servico');
+            $table->text('descricao');
+            $table->string('status');
+            $table->string('prioridade');
+            $table->string('cliente');
             $table->timestamps();
 
             $table->foreign('id_funcionario')->references('id')->on('funcionarios');

@@ -37,7 +37,7 @@
     <div class="container">
       <form class="form-login" action="{{route('logando')}}" method="post">
         @csrf
-        <h2 class="form-login-heading">gerencia ordem de serviço</h2>
+        <h2 class="form-login-heading">gerência ordem de serviço</h2>
         <div class="login-wrap">
 
             @if ($errors->any())
@@ -96,7 +96,7 @@
   <!-- You can use an image of whatever size. This script will stretch to fit in any screen size.-->
   <script type="text/javascript" src="{{asset('assets/lib/jquery.backstretch.min.js')}}"></script>
   <script>
-    $.backstretch("{{asset('assets/img/login-bg.jpg')}}", {
+    $.backstretch("{{asset('assets/img/fundo.jpg')}}", {
       speed: 500
     });
   </script>

@@ -32,23 +32,21 @@
         <div class="form-group">
           <label class="col-sm-2 col-sm-2 control-label">Número da Ordem: </label>
           <div class="col-sm-10">
-            <input type="text" class="form-control" value="@if ($processos != null) {{$processos+1}} @endif" disabled>
+            <input type="text" class="form-control" value="@if ($processos != null) {{$processos+1}} @else 1 @endif" readonly=“true”>
           </div>
         </div>
 
         <div class="form-group">
           <label class="col-sm-2 col-sm-2 control-label">Data:</label>
           <div class="col-md-3 col-xs-11">
-            <input class="form-control form-control-inline input-medium default-date-picker" size="16" type="text" value="" name="dt_servico">
-            <span class="help-block">Selecione a data.</span>
+          <input class="form-control form-control-inline input-medium default-date-picker" size="16" type="text" value="{{date('d/m/Y')}}" name="dt_servico" readonly=“true”>
           </div>
         </div>
         
         <div class="form-group">
           <label class="col-sm-2 col-sm-2 control-label">Nome do Funcionário:</label>
           <div class="col-sm-10">
-            <input type="text" class="form-control" name="nome">
-            <span class="help-block">Colocar apenas o nome de quem realizou o trabalho.</span>
+          <input type="text" class="form-control" name="nome" value="{{session('fun_nome')}}"  readonly=“true”>
           </div>
         </div>
         
@@ -58,7 +56,26 @@
             <input type="text" class="form-control round-form" value="SECOM" disabled name="setor">
           </div>
         </div>
+
+        <div class="form-group">
+          <label class="col-sm-2 col-sm-2 control-label">Nome do Solicitante:</label>
+          <div class="col-sm-10">
+          <input type="text" class="form-control" name="solicitante" >
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="confirm_password" class="control-label col-lg-2">Prioridade:</label>
+          <div class="col-md-2">
+            <select class="form-control" name="prioridade">
+              <option>Alta</option>
+              <option>Média</option>
+              <option>Baixa</option>
+            </select>
+          </div>
+        </div>
         
+
         <div class="form-group ">
           <label for="ccomment" class="control-label col-lg-2">Descrição do Serviço:</label>
           <div class="col-lg-10">
@@ -69,7 +86,6 @@
         <div class="form-group">
           <div class="col-lg-offset-2 col-lg-10">
             <button class="btn btn-theme" type="submit">Salvar</button>
-            <button class="btn btn-theme04" type="button">Cancelar</button>
           </div>
         </div>
         

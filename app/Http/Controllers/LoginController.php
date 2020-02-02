@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Usuario;
+use App\Models\Funcionario;
 
 class LoginController extends Controller
 {
@@ -22,6 +23,11 @@ class LoginController extends Controller
         $usuario = Usuario::where('login', '=', $request->login)->where('senha', '=', $request->senha)->first();
         
         if ($usuario != null) {
+            $fun = Funcionario::where('id', '=', $usuario->id_funcionario)->first();
+            session([
+                'fun_nome' => $fun->nome,
+                'fun_privilegio'=> $usuario->privilegio
+                ]);
             
             return redirect()->route('main', $menu = ['menu' => 1]);
         }else{
@@ -30,8 +36,8 @@ class LoginController extends Controller
     }
 
     public function deslogando(Request $request){
-        
-        return view('login');
+        $request->session()->flush();
+        return redirect()->route('login');
     }
 
 }

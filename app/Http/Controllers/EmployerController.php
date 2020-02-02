@@ -7,7 +7,11 @@ use App\Models\Funcionario;
 
 class EmployerController extends Controller
 {
-    private $menu = ['menu' => 2];
+    private $menu = ['menu' => 3];
+
+    public function pg_register(){
+        return view('employer_register', $this->menu);
+    }
 
     public function employ_register(Request $request){
 
@@ -29,9 +33,9 @@ class EmployerController extends Controller
             $processo->setor = $request->setor;
 
             if ($processo->save()) {
-                return redirect()->route('user_register', $this->menu)->with('save-status', 's');
+                return redirect()->route('pg_employer_register', $this->menu)->with('save-status', 's');
             }else{
-                return redirect()->route('user_register', $this->menu)->with('save-status', 'n');
+                return redirect()->route('pg_employer_register', $this->menu)->with('save-status', 'n');
             }
 
 

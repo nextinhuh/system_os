@@ -18,6 +18,7 @@ class CriandoTabelaUsuarios extends Migration
             $table->unsignedBigInteger('id_funcionario');
             $table->string('login');
             $table->string('senha');
+            $table->boolean('privilegio');
             $table->string('email');
             $table->timestamps();
 
