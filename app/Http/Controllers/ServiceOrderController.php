@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Ordem_Servico;
 use App\Models\Funcionario;
+use DateTime;
 
 class ServiceOrderController extends Controller
 {
@@ -28,7 +29,13 @@ class ServiceOrderController extends Controller
     public function order_search(){
         //$ordem = Ordem_Servico::select()->get(); 
         $ordem = Ordem_Servico::paginate(10);
-        return view('search_so', ['ordem' => $ordem, 'menu' => 2, 'procura' => 0] );
+        foreach ($ordem as $hr){
+            $minha_data = $hr ['created_at'];
+            $date = new DateTime($minha_data);
+            $teste[] = $date->format('H:i:s');  
+        }
+        
+        return view('search_so', ['ordem' => $ordem, 'menu' => 2, 'procura' => 0, 'hora' => $teste, 'teste' => -1] );
         //return view('search_so', $this->dados);
     }
     
@@ -79,9 +86,13 @@ class ServiceOrderController extends Controller
             
             if($request->num_os != null){
                 $ordem = Ordem_Servico::where('id', '=', $request->num_os)->get();
-                
+                foreach ($ordem as $hr){
+                    $minha_data = $hr ['created_at'];
+                    $date = new DateTime($minha_data);
+                    $teste[] = $date->format('H:i:s');  
+                }
                 if($ordem != null){
-                    return view('search_so',['ordem' => $ordem, 'menu' => 2, 'procura' => 1]);
+                    return view('search_so',['ordem' => $ordem, 'menu' => 2, 'procura' => 1, 'teste' => -1, 'hora' => $teste]);
                 }else{
                     return redirect()->route('order_search', $this->dados)->with('save-status', 'fail_user');
                 }
@@ -155,17 +166,17 @@ class ServiceOrderController extends Controller
         {
             
             $request->validate([
-                'desc_servico' => 'required'
+                'resolucao' => 'required'
             ], [
                 'required' => 'O campo :attribute é obrigatório!'
             ],[
-                'desc_servico' => 'Descrição do Serviço'
+                'resolucao' => 'Resolução'
                 ]);
                 
                 $ordem = Ordem_Servico::where('id', '=', $request->num_os)->first();
                 
                 if ($ordem != null) {
-                    $ordem->descricao = $request->desc_servico;
+                    $ordem->resolucao = $request->resolucao;
                     $ordem->prioridade = $request->prioridade;
                     $ordem->status = $request->status;
                     $ordem->save();

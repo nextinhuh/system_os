@@ -75,24 +75,29 @@
             <th><i class="fa fa-user"></i> Solicitante</th>
             <th><i class=" fa fa-edit"></i> Setor</th>
             <th><i class="fa fa-flag"></i> Prioridade</th>
-            <th><i class=" fa fa-edit"></i> Descrição do Serviço</th>
+            <th><i class="fa fa-flag"></i> Hora do Chamado</th>
+            <th><i class=" fa fa-edit"></i> Descrição do Problema</th>
+            <th><i class=" fa fa-edit"></i> Resolução</th>
             <th><i class="fa fa-bookmark"></i> Status</th>
             <th></th>
           </tr>
         </thead>
         <tbody>
           
-          @foreach ($ordem as $ordens)
+          @foreach ($ordem as $ordens )
           <tr>
             <th>{{$ordens['id']}}</th>
             <td>{{$ordens['dt_servico']}}</td>
             <td>{{$ordens['cliente']}}</td>
             <td>{{$ordens['setor']}}</td>
             <td>{{$ordens['prioridade']}}</td>
+            <td>{{$hora[$teste= $teste+1]}}</td>
             <td>{{$ordens['descricao']}}</td>
+            <td>{{$ordens['resolucao']}}</td>
             <td>{{$ordens['status']}}</td>
           </tr>
           @endforeach
+          
           
         </tr>
       </tbody>

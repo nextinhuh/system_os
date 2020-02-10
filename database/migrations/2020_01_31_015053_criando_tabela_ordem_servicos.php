@@ -19,6 +19,7 @@ class CriandoTabelaOrdemServicos extends Migration
             $table->string('setor');
             $table->string('dt_servico');
             $table->text('descricao');
+            $table->text('resolucao');
             $table->string('status');
             $table->string('prioridade');
             $table->string('cliente');

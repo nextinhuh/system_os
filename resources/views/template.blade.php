@@ -86,7 +86,7 @@
                   <ul class="sub">
                     <li><a href="{{route('order_register')}}"  >Gerar Ordem de Serviço</a></li>
                     <li><a href="{{route('order_search')}}">Pesquisar Ordem de Serviço</a></li>
-                    <li><a href="{{route('order_edit')}}">Editar Ordem de Serviço</a></li>
+                    <li><a href="{{route('order_edit')}}">Atualizar Ordem de Serviço</a></li>
                   </ul>
                 </li>
                 

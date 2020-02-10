@@ -64,14 +64,14 @@
                 <div class="form-group">
                     <label class="col-sm-2 col-sm-2 control-label">Data:</label>
                     <div class="col-md-3 col-xs-11">
-                        <input class="form-control form-control-inline input-medium default-date-picker" size="16" type="text" value="@if ($teste == 1){{$ordem['dt_servico']}}@endif" name="dt_servico" readonly=“true”>
+                        <input class="form-control form-control-inline input-medium default-date-picker" size="16" type="text" value="@if ($teste == 1){{$ordem['dt_servico']}}@endif" name="dt_servico" disabled>
                     </div>
                 </div>
                 
                 <div class="form-group">
                     <label class="col-sm-2 col-sm-2 control-label">Nome do Funcionário:</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" name="nome" value="@if ($teste == 1){{$nome_fun['nome']}}@endif"  readonly=“true”>
+                        <input type="text" class="form-control" name="nome" value="@if ($teste == 1){{$nome_fun['nome']}}@endif"  disabled>
                     </div>
                 </div>
                 
@@ -85,7 +85,14 @@
                 <div class="form-group">
                     <label class="col-sm-2 col-sm-2 control-label">Nome do Solicitante:</label>
                     <div class="col-sm-10">
-                        <input type="text" value="@if ($teste == 1){{$ordem['cliente']}}@endif" class="form-control" name="solicitante" readonly=“true”>
+                        <input type="text" value="@if ($teste == 1){{$ordem['cliente']}}@endif" class="form-control" name="solicitante" disabled>
+                    </div>
+                </div>
+
+                <div class="form-group ">
+                    <label for="ccomment" class="control-label col-lg-2">Descrição do Problema:</label>
+                    <div class="col-lg-10">
+                        <textarea class="form-control "  id="ccomment" name="desc_servico" disabled>@if ($teste == 1){{$ordem['descricao']}}@endif</textarea>
                     </div>
                 </div>
                 
@@ -112,10 +119,12 @@
                 </div>
                 
                 
+                
+
                 <div class="form-group ">
-                    <label for="ccomment" class="control-label col-lg-2">Descrição do Serviço:</label>
+                    <label for="ccomment" class="control-label col-lg-2">Resolução:</label>
                     <div class="col-lg-10">
-                        <textarea class="form-control "  id="ccomment" name="desc_servico">@if ($teste == 1){{$ordem['descricao']}}@endif</textarea>
+                        <textarea class="form-control "  id="ccomment" name="resolucao"></textarea>
                     </div>
                 </div>
                 
