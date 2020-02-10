@@ -107,9 +107,13 @@ class ServiceOrderController extends Controller
             
             if($request->nome != null){
                 $ordem = Ordem_Servico::where('cliente', '=', $request->nome)->get();
-                
+                foreach ($ordem as $hr){
+                    $minha_data = $hr ['created_at'];
+                    $date = new DateTime($minha_data);
+                    $teste[] = $date->format('H:i:s');  
+                }
                 if($ordem != null){
-                    return view('search_so',['ordem' => $ordem, 'menu' => 2, 'procura' => 1]);
+                    return view('search_so',['ordem' => $ordem, 'menu' => 2, 'procura' => 1, 'teste' => -1, 'hora' => $teste]);
                 }else{
                     return redirect()->route('order_search', $this->dados)->with('save-status', 'fail_user');
                 }
