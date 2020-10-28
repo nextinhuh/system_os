@@ -2,11 +2,7 @@
 
 :white_check_mark: PHP
 
-:white_check_mark: Framework Laravel  
-
-### Consumo de API externa:
-
-:white_check_mark: Busca de imagens do BING ( Microsoft )
+:white_check_mark: Framework Laravel
 
 ### Para rodar a aplicação tem que ter instalado:  
 
